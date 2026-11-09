@@ -1,17 +1,16 @@
 from flask import Flask, render_template
+from database import get_connection, init_db
 
 app = Flask(__name__)
 
+init_db()
+
 @app.route("/")
 def home():
-    nama = "Ragil"
-    daftar_catatan = [
-        "Belajar Flask",
-        "Bikin proyek Keep Clone",
-        "Push ke GitHub",
-        "Portofolio mandiri"
-    ]
-    return render_template("index.html", nama=nama, daftar_catatan=daftar_catatan)
+    conn = get_connection()
+    notes = conn.execute("SELECT * FROM notes ORDER BY id DESC").fetchall()
+    conn.close()
+    return render_template("index.html", notes=notes)
 
 if __name__=="__main__":
     app.run(debug=True)

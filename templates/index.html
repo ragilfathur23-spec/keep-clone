@@ -7,13 +7,16 @@
     <body>
         
         <h1>Keep Clone</h1>
-        <p>Halo, {{ nama }}!</p>
-
+        
         <h2>Daftar Catatan</h2>
-        <ul>
-            {% for catatan in daftar_catatan %}
-                <li>{{ catatan }}</li>
-            {% endfor %}
-        </ul>
+        {% if notes %}
+            <ul>
+                {% for note in notes %}
+                    <li><strong>{{ note["title"] }}</strong>: {{ note["content"] }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Belum ada catatan</p>
+        {% endif %}
     </body>
 </html>
