@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Keep Clone</title>
+    </head>
+    <body>
+        
+        <h1>Keep Clone</h1>
+        <p>Halo, {{ nama }}!</p>
+
+        <h2>Daftar Catatan</h2>
+        <ul>
+            {% for catatan in daftar_catatan %}
+                <li>{{ catatan }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
