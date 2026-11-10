@@ -11,14 +11,9 @@ def home():
     notes = conn.execute(
         "SELECT * FROM notes ORDER BY is_pinned DESC, id DESC"
         ).fetchall()
-    items = conn.execute("SELECT * FROM checklist_items ORDER BY id").fetchall()
     conn.close()
-    
-    items_by_note = {}
-    for item in items:
-        items_by_note.setdefault(item["note_id"], []).append(item)
-    
-    return render_template("index.html", notes=notes, items_by_note=items_by_note)
+
+    return render_template("index.html", notes=notes)
 
 @app.route("/add", methods=["POST"])
 def add_note():
@@ -77,21 +72,6 @@ def pin_note(note_id):
     )
     conn.commit()
     conn.close()
-
-    return redirect(url_for("home"))
-
-@app.route("/note/<int:note_id>/items/add", methods=["POST"])
-def add_item(note_id):
-    text = request.form["text"].strip()
-
-    if text:
-        conn = get_connection()
-        conn.execute(
-            "INSERT INTO checklist_items (note_id, text) VALUES (?, ?)",
-            (note_id, text),
-        )
-        conn.commit()
-        conn.close()
 
     return redirect(url_for("home"))
 
