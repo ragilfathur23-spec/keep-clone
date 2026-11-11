@@ -17,8 +17,10 @@ def home():
 
 @app.route("/add", methods=["POST"])
 def add_note():
-    title = request.form["title"]
-    content = request.form["content"]
+    title = request.form["title"].strip()
+    content = request.form["content"].strip()
+    if not content:
+        return redirect(url_for("home"))
 
     conn = get_connection()
     conn.execute(
@@ -44,8 +46,12 @@ def edit_note(note_id):
     conn = get_connection()
 
     if request.method == "POST":
-        title = request.form["title"]
-        content = request.form["content"]
+        title = request.form["title"].strip()
+        content = request.form["content"].strip()
+        if not content:
+            conn.close()
+            return redirect(url_for("home"))
+
         conn.execute(
             "UPDATE notes SET title = ?, content = ? WHERE id = ?",
             (title, content, note_id),
