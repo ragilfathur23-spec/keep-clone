@@ -30,7 +30,13 @@ Aplikasi catatan sederhana yang terinspirasi Google Keep, dibuat dengan Python d
 
 ## Screenshot
 
+### Halaman utama
+
 ![Halaman utama](screenshots/home.png)
+
+### Halaman utama (responsif)
+
+![Halaman responsif](screenshots/responsif.png)
 
 ## Yang Saya Pelajari
 
