@@ -21,12 +21,14 @@ Aplikasi catatan sederhana yang terinspirasi Google Keep, dibuat dengan Python d
 
 ## Cara Menjalankan
 
-1. Clone repository ini
-2. Buat dan aktifkan virtual environment:
+1. Clone repository ini (buka terminal di folder yang dituju pada kode editor (VS Code)) dengan jalankan perintah:
+   `git clone https://github.com/ragilfathur23-spec/keep-clone.git`
+2. Masuk ke folder proyek: `cd keep-clone`
+3. Buat dan aktifkan virtual environment:
    `python -m venv venv` lalu `venv\Scripts\activate` (Windows)
-3. Install dependensi: `pip install -r requirements.txt`
-4. Jalankan: `flask --app app run --debug`
-5. Buka `http://127.0.0.1:5000`
+4. Install dependensi: `pip install -r requirements.txt`, Jika `pip install` gagal (biasanya karena koneksi internet), jalankan perintah yang sama sekali lagi. Instalasi berhasil jika muncul "Successfully installed" atau "Requirement already satisfied".
+5. Jalankan: `flask --app app run --debug`
+6. Buka `http://127.0.0.1:5000`
 
 ## Screenshot
 
